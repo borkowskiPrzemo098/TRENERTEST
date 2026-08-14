@@ -47,6 +47,40 @@ if (form && status) {
   });
 }
 
+// ---- Scroll-to-top button ----
+var scrollTopBtn = document.getElementById("scrollTop");
+if (scrollTopBtn) {
+  var toggleScrollTop = function () {
+    scrollTopBtn.classList.toggle("visible", window.scrollY > 560);
+  };
+  toggleScrollTop();
+  window.addEventListener("scroll", toggleScrollTop, { passive: true });
+}
+
+// ---- Bottom nav: highlight the section currently in view ----
+var bottomNavLinks = document.querySelectorAll(".bottom-nav a[data-section]");
+if (bottomNavLinks.length && "IntersectionObserver" in window) {
+  var sectionEls = Array.from(bottomNavLinks)
+    .map(function (a) { return document.getElementById(a.dataset.section); })
+    .filter(Boolean);
+
+  var setActive = function (id) {
+    bottomNavLinks.forEach(function (a) {
+      a.classList.toggle("active", a.dataset.section === id);
+    });
+  };
+
+  var sectionObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    },
+    { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+  );
+  sectionEls.forEach(function (el) { sectionObserver.observe(el); });
+}
+
 // ---- Motion enhancements (optional, never load-bearing) ----
 var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

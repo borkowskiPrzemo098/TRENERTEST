@@ -489,6 +489,67 @@ textarea{ resize: vertical; }
 }
 
 /* =========================================================
+   BOTTOM MOBILE NAV — app-style tab bar, phones/small tablets only
+   ========================================================= */
+.bottom-nav{
+  display: none;
+  position: fixed; left:0; right:0; bottom:0; z-index: 600;
+  background: rgba(11,11,12,.96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 2px;
+}
+.bottom-nav a{
+  flex: 1 1 0; min-width: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 6px 1px;
+  color: var(--paper-faint);
+  font-family: var(--ff-label); font-weight: 700; font-size: .54rem; letter-spacing: .01em;
+  border-radius: var(--radius);
+  transition: color .15s ease;
+  white-space: nowrap;
+}
+.bottom-nav a svg{
+  width: 19px; height: 19px; flex: none; fill: none; stroke: currentColor;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.bottom-nav a.active,
+.bottom-nav a:active{ color: var(--paper); }
+.bottom-nav-cta{ color: var(--ember-hot) !important; }
+.bottom-nav-cta svg{ stroke: var(--ember-hot); }
+
+@media (max-width: 880px){
+  .bottom-nav{ display: flex; }
+  body{ padding-bottom: calc(58px + env(safe-area-inset-bottom)); }
+}
+
+/* =========================================================
+   SCROLL TO TOP
+   ========================================================= */
+.scroll-top{
+  position: fixed; right: 20px; bottom: 28px; z-index: 590;
+  width: 46px; height: 46px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--ember); color: #fff;
+  border: 1px solid var(--ember-hot);
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+  transition: opacity .25s ease, transform .25s ease, background .15s ease, visibility .25s;
+}
+.scroll-top.visible{ opacity: 1; visibility: visible; transform: translateY(0); }
+.scroll-top:hover{ background: var(--ember-hot); }
+.scroll-top svg{
+  width: 20px; height: 20px; fill: none; stroke: currentColor;
+  stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+@media (max-width: 880px){
+  .scroll-top{ right: 16px; bottom: calc(66px + env(safe-area-inset-bottom)); width: 42px; height: 42px; }
+}
+
+/* =========================================================
    Motion baseline — content is visible by default, always.
    Motion (JS) sets its own "from" opacity right before animating,
    so a slow/blocked CDN or a script error never leaves real
