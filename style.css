@@ -580,19 +580,20 @@ textarea{ resize: vertical; }
    animation state that can stall mid-flight.
    ========================================================= */
 .reveal{
-  /* Transform only — deliberately NOT animating opacity. Confirmed live,
-     three separate ways (a JS library, then a plain CSS transition): an
-     opacity-from-0 reveal can get stuck and leave real content (stats,
-     the about copy) permanently invisible on real devices. A slide-into-
-     place motion still reads as "appearing", and content is readable at
-     every single frame of it even in the worst case. */
+  opacity: 0;
   transform: translateY(24px);
-  transition: transform .6s cubic-bezier(.16,.8,.24,1);
+  transition: opacity .6s cubic-bezier(.16,.8,.24,1), transform .6s cubic-bezier(.16,.8,.24,1);
 }
-.reveal.in{ transform: none; }
+.reveal.in{ opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce){
-  .reveal{ transform: none; transition: none; }
+  .reveal{ opacity: 1; transform: none; transition: none; }
 }
+/* Safety net, not a workaround for a known bug: if a browser tab is
+   backgrounded/throttled right as an element enters view, its transition
+   can (rarely) fail to complete. Force every "in" element visible after a
+   short grace period no matter what, so nothing can stay stuck hidden. */
+.reveal.in{ animation: reveal-force-visible 0s linear 1.2s forwards; }
+@keyframes reveal-force-visible{ to{ opacity: 1; transform: none; } }
 
 /* =========================================================
    Motion baseline — content is visible by default, always.
