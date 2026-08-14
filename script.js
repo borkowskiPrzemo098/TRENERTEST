@@ -55,6 +55,15 @@ if (scrollTopBtn) {
   };
   toggleScrollTop();
   window.addEventListener("scroll", toggleScrollTop, { passive: true });
+
+  // Its target (#top) is a position:sticky header, and letting the browser
+  // handle the native href="#top" jump to a sticky element is unreliable —
+  // confirmed in testing: the URL updates to #top but the page never
+  // actually scrolls. Scroll explicitly instead.
+  scrollTopBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
 // ---- Bottom nav: highlight the section currently in view ----
