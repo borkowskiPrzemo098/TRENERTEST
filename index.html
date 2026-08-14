@@ -2,11 +2,11 @@
 <html lang="pl">
 <head>
 <!--
-THESIS: A trainer's site as a steel-plate foundry floor, not a soft wellness brochure — the category default (cream cards, rounded avatars, pastel CTAs) is refused for raw stock, rivets, and hazard striping.
-OWN-WORLD: near-black graphite ground, brushed-steel panels with rivet corners, hazard-yellow/black diagonal striping as the sole warning accent, ember-red as the single hot accent for CTAs and heat states. Anton display caps stamped like foundry signage, Barlow Condensed tracked labels, hairline steel seams instead of shadows.
-STORY: a visitor lands, understands this trainer forges results through hard, measured work, sees the offer (packages), sees proof (transformations + testimonials), and books a session.
-FIRST VIEWPORT: full-bleed dark hero, riveted steel plate panel top-left carrying the trainer name stamp, oversized Anton headline right of center, hazard-stripe CTA bar bottom, one barbell-plate SVG mark anchoring the composition.
-FORM: Steel / weight-plate foundry direction (assigned candidate 3 of 7, seed key 65a6b4f8), industrial gym material system.
+THESIS: TESTOSTERON energy carried by scale, weight and one hot accent color — not by decorative chrome (rivets, hazard tape, skeuomorphic steel). Revision v2: stripped every ornamental industrial texture the user flagged as heavy/illegible; identity now lives in oversized type, negative space and a single red accent.
+OWN-WORLD: near-black ground, one ember-red accent used sparingly, generous whitespace, flat hairline dividers instead of textured panels. Anton display caps, Barlow Condensed tracked labels, Barlow body.
+STORY: a visitor lands, reads the offer in one glance, sees the trainer, sees proof (transformations + testimonials), books a session.
+FIRST VIEWPORT: full-bleed dark hero, oversized Anton headline, one clear CTA, no decorative chrome competing for attention.
+FORM: Steel/foundry direction, de-ornamented per user feedback (v2) — bold through scale and contrast, not texture.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
 -->
 <meta charset="UTF-8">
@@ -26,7 +26,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <header class="site-header" id="top">
   <div class="header-inner">
     <a href="#top" class="brand">
-      <span class="brand-plate">Ż</span>
+      <span class="brand-mark">Ż</span>
       <span class="brand-text">ŻELAZO<span class="brand-sub">TRENING&nbsp;PERSONALNY</span></span>
     </a>
     <nav class="main-nav" aria-label="Nawigacja główna">
@@ -53,52 +53,29 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
-  <div class="hero-hazard-top" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="hero-plate" aria-hidden="true">
-      <span class="plate-line">ODLEWNIA</span>
-      <span class="plate-line">WYNIKÓW</span>
-      <span class="plate-rivet tl"></span>
-      <span class="plate-rivet tr"></span>
-      <span class="plate-rivet bl"></span>
-      <span class="plate-rivet br"></span>
-    </div>
+    <p class="tag" data-reveal>TRENING PERSONALNY</p>
 
-    <h1 class="hero-title">
+    <h1 class="hero-title" data-reveal>
       <span class="line">ZERO&nbsp;WYMÓWEK.</span>
-      <span class="line hot">CZYSTA&nbsp;STAL.</span>
+      <span class="line hot">CZYSTA&nbsp;SIŁA.</span>
     </h1>
-    <p class="hero-sub">
-      Personalny trening siłowy dla ludzi, którzy mają dość gadania. Program budowany pod Twój ciężar, Twój czas i Twój cel — mierzony w kilogramach, nie w obietnicach.
+    <p class="hero-sub" data-reveal>
+      Program budowany pod Twój ciężar, Twój czas i Twój cel — mierzony w kilogramach, nie w obietnicach.
     </p>
 
-    <div class="hero-actions">
+    <div class="hero-actions" data-reveal>
       <a href="#kontakt" class="btn btn-primary">ZACZNIJ TRENING</a>
       <a href="#oferta" class="btn btn-ghost">ZOBACZ OFERTĘ</a>
     </div>
 
-    <dl class="hero-stats">
+    <dl class="hero-stats" data-reveal>
       <div><dt>250+</dt><dd>przeszkolonych klientów<sup>*</sup></dd></div>
       <div><dt>9&nbsp;LAT</dt><dd>na sali<sup>*</sup></dd></div>
       <div><dt>0</dt><dd>gotowych planów z internetu</dd></div>
     </dl>
+    <p class="hero-note">* dane przykładowe — szablon do podmiany na realne liczby</p>
   </div>
-
-  <svg class="hero-plates" viewBox="0 0 600 600" aria-hidden="true">
-    <circle cx="300" cy="300" r="270" class="ring ring-1"/>
-    <circle cx="300" cy="300" r="205" class="ring ring-2"/>
-    <circle cx="300" cy="300" r="140" class="ring ring-3"/>
-    <circle cx="300" cy="300" r="46" class="hub"/>
-    <circle cx="300" cy="204" r="10" class="bolt"/>
-    <circle cx="384" cy="252" r="10" class="bolt"/>
-    <circle cx="384" cy="348" r="10" class="bolt"/>
-    <circle cx="300" cy="396" r="10" class="bolt"/>
-    <circle cx="216" cy="348" r="10" class="bolt"/>
-    <circle cx="216" cy="252" r="10" class="bolt"/>
-  </svg>
-
-  <div class="hero-hazard-bottom" aria-hidden="true"></div>
-  <p class="hero-note">* dane przykładowe — szablon do podmiany na realne liczby</p>
 </section>
 
 <!-- ============ O MNIE ============ -->
@@ -114,18 +91,17 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
             <path d="M90 240 L40 320 L60 340 L110 275 Z"/>
             <path d="M310 240 L360 320 L340 340 L290 275 Z"/>
           </g>
-          <rect x="0" y="0" width="400" height="480" class="sil-hazard-edge"/>
         </svg>
         <span class="media-tag">SYLWETKA — MIEJSCE NA TWOJE ZDJĘCIE</span>
       </div>
-      <div class="stat-rivet-card">
+      <div class="stat-card">
         <span class="src-num">12</span>
         <span class="src-label">lat doświadczenia<br>w sportach siłowych<sup>*</sup></span>
       </div>
     </div>
 
     <div class="about-copy">
-      <p class="eyebrow-plate">O TRENERZE</p>
+      <p class="eyebrow">O TRENERZE</p>
       <h2>TRENING TO&nbsp;RZEMIOSŁO.<br>JA&nbsp;JESTEM&nbsp;KOWALEM.</h2>
       <p class="lead">
         Nazywam się <strong>[Imię i Nazwisko Trenera]</strong> — trener personalny specjalizujący się w treningu siłowym, budowaniu masy i redukcji tkanki tłuszczowej u osób, które chcą realnych efektów, a nie kolejnego planu z Instagrama.
@@ -148,7 +124,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <!-- ============ OFERTA ============ -->
 <section class="offer" id="oferta">
   <div class="section-head">
-    <p class="eyebrow-plate">OFERTA</p>
+    <p class="eyebrow">OFERTA</p>
     <h2>WYBIERZ SWÓJ&nbsp;CIĘŻAR</h2>
     <p class="section-sub">Trzy ścieżki. Jeden kierunek — do przodu. Każdy pakiet do modyfikacji pod Twoją ofertę.</p>
   </div>
@@ -206,7 +182,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <!-- ============ EFEKTY / TRANSFORMACJE ============ -->
 <section class="results" id="efekty">
   <div class="section-head light">
-    <p class="eyebrow-plate light">EFEKTY</p>
+    <p class="eyebrow light">EFEKTY</p>
     <h2>PRZED. PO.<br>ŻADNYCH&nbsp;FILTRÓW.</h2>
     <p class="section-sub light">Przykładowe miejsca na realne przemiany klientów — podmień na własne zdjęcia i wyniki.</p>
   </div>
@@ -260,7 +236,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <!-- ============ OPINIE ============ -->
 <section class="testimonials" id="opinie">
   <div class="section-head">
-    <p class="eyebrow-plate">OPINIE</p>
+    <p class="eyebrow">OPINIE</p>
     <h2>MÓWIĄ&nbsp;CI, KTÓRZY&nbsp;PODNIEŚLI</h2>
   </div>
 
@@ -288,7 +264,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <!-- ============ CENNIK ============ -->
 <section class="pricing" id="cennik">
   <div class="section-head">
-    <p class="eyebrow-plate">CENNIK</p>
+    <p class="eyebrow">CENNIK</p>
     <h2>CENY&nbsp;JASNE&nbsp;JAK&nbsp;STAL</h2>
     <p class="section-sub">Przykładowy cennik — dopasuj stawki do swojej oferty i lokalizacji.</p>
   </div>
@@ -323,10 +299,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <!-- ============ KONTAKT ============ -->
 <section class="contact" id="kontakt">
-  <div class="hero-hazard-top" aria-hidden="true"></div>
   <div class="contact-inner">
     <div class="contact-copy">
-      <p class="eyebrow-plate light">ZACZNIJ&nbsp;TERAZ</p>
+      <p class="eyebrow light">ZACZNIJ&nbsp;TERAZ</p>
       <h2>KONIEC&nbsp;GADANIA.<br>CZAS&nbsp;NA&nbsp;PIERWSZY&nbsp;TRENING.</h2>
       <p class="section-sub light">
         Wypełnij formularz, a trener skontaktuje się w ciągu 24 godzin, by ustalić termin bezpłatnej konsultacji.
@@ -380,7 +355,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <footer class="site-footer">
   <div class="footer-inner">
     <a href="#top" class="brand brand-footer">
-      <span class="brand-plate">Ż</span>
+      <span class="brand-mark">Ż</span>
       <span class="brand-text">ŻELAZO<span class="brand-sub">TRENING&nbsp;PERSONALNY</span></span>
     </a>
     <nav class="footer-nav" aria-label="Nawigacja w stopce">
@@ -395,6 +370,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>
