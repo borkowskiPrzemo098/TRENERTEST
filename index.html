@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<!--
+THESIS: A trainer's site as a steel-plate foundry floor, not a soft wellness brochure — the category default (cream cards, rounded avatars, pastel CTAs) is refused for raw stock, rivets, and hazard striping.
+OWN-WORLD: near-black graphite ground, brushed-steel panels with rivet corners, hazard-yellow/black diagonal striping as the sole warning accent, ember-red as the single hot accent for CTAs and heat states. Anton display caps stamped like foundry signage, Barlow Condensed tracked labels, hairline steel seams instead of shadows.
+STORY: a visitor lands, understands this trainer forges results through hard, measured work, sees the offer (packages), sees proof (transformations + testimonials), and books a session.
+FIRST VIEWPORT: full-bleed dark hero, riveted steel plate panel top-left carrying the trainer name stamp, oversized Anton headline right of center, hazard-stripe CTA bar bottom, one barbell-plate SVG mark anchoring the composition.
+FORM: Steel / weight-plate foundry direction (assigned candidate 3 of 7, seed key 65a6b4f8), industrial gym material system.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ŻELAZO — Trener Personalny | Szablon</title>
+<meta name="description" content="Szablon strony dla trenera personalnego. Surowa siła, mierzalne efekty, żadnych wymówek.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a href="#top" class="brand">
+      <span class="brand-plate">Ż</span>
+      <span class="brand-text">ŻELAZO<span class="brand-sub">TRENING&nbsp;PERSONALNY</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Nawigacja główna">
+      <a href="#o-mnie">O MNIE</a>
+      <a href="#oferta">OFERTA</a>
+      <a href="#efekty">EFEKTY</a>
+      <a href="#opinie">OPINIE</a>
+      <a href="#cennik">CENNIK</a>
+      <a href="#kontakt" class="nav-cta">ZACZNIJ TRENING</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Nawigacja mobilna">
+    <a href="#o-mnie">O MNIE</a>
+    <a href="#oferta">OFERTA</a>
+    <a href="#efekty">EFEKTY</a>
+    <a href="#opinie">OPINIE</a>
+    <a href="#cennik">CENNIK</a>
+    <a href="#kontakt" class="nav-cta">ZACZNIJ TRENING</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-hazard-top" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-plate" aria-hidden="true">
+      <span class="plate-line">ODLEWNIA</span>
+      <span class="plate-line">WYNIKÓW</span>
+      <span class="plate-rivet tl"></span>
+      <span class="plate-rivet tr"></span>
+      <span class="plate-rivet bl"></span>
+      <span class="plate-rivet br"></span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line">ZERO&nbsp;WYMÓWEK.</span>
+      <span class="line hot">CZYSTA&nbsp;STAL.</span>
+    </h1>
+    <p class="hero-sub">
+      Personalny trening siłowy dla ludzi, którzy mają dość gadania. Program budowany pod Twój ciężar, Twój czas i Twój cel — mierzony w kilogramach, nie w obietnicach.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn btn-primary">ZACZNIJ TRENING</a>
+      <a href="#oferta" class="btn btn-ghost">ZOBACZ OFERTĘ</a>
+    </div>
+
+    <dl class="hero-stats">
+      <div><dt>250+</dt><dd>przeszkolonych klientów<sup>*</sup></dd></div>
+      <div><dt>9&nbsp;LAT</dt><dd>na sali<sup>*</sup></dd></div>
+      <div><dt>0</dt><dd>gotowych planów z internetu</dd></div>
+    </dl>
+  </div>
+
+  <svg class="hero-plates" viewBox="0 0 600 600" aria-hidden="true">
+    <circle cx="300" cy="300" r="270" class="ring ring-1"/>
+    <circle cx="300" cy="300" r="205" class="ring ring-2"/>
+    <circle cx="300" cy="300" r="140" class="ring ring-3"/>
+    <circle cx="300" cy="300" r="46" class="hub"/>
+    <circle cx="300" cy="204" r="10" class="bolt"/>
+    <circle cx="384" cy="252" r="10" class="bolt"/>
+    <circle cx="384" cy="348" r="10" class="bolt"/>
+    <circle cx="300" cy="396" r="10" class="bolt"/>
+    <circle cx="216" cy="348" r="10" class="bolt"/>
+    <circle cx="216" cy="252" r="10" class="bolt"/>
+  </svg>
+
+  <div class="hero-hazard-bottom" aria-hidden="true"></div>
+  <p class="hero-note">* dane przykładowe — szablon do podmiany na realne liczby</p>
+</section>
+
+<!-- ============ O MNIE ============ -->
+<section class="about" id="o-mnie">
+  <div class="about-inner">
+    <div class="about-media" aria-hidden="true">
+      <div class="silhouette-frame">
+        <svg viewBox="0 0 400 480" class="silhouette">
+          <rect width="400" height="480" class="sil-bg"/>
+          <g class="sil-figure">
+            <ellipse cx="200" cy="90" rx="46" ry="52"/>
+            <path d="M200 140 C120 150 90 210 90 260 L90 430 C90 450 110 460 130 460 L140 340 L145 460 C145 460 200 470 255 460 L260 340 L270 460 C290 460 310 450 310 430 L310 260 C310 210 280 150 200 140 Z"/>
+            <path d="M90 240 L40 320 L60 340 L110 275 Z"/>
+            <path d="M310 240 L360 320 L340 340 L290 275 Z"/>
+          </g>
+          <rect x="0" y="0" width="400" height="480" class="sil-hazard-edge"/>
+        </svg>
+        <span class="media-tag">SYLWETKA — MIEJSCE NA TWOJE ZDJĘCIE</span>
+      </div>
+      <div class="stat-rivet-card">
+        <span class="src-num">12</span>
+        <span class="src-label">lat doświadczenia<br>w sportach siłowych<sup>*</sup></span>
+      </div>
+    </div>
+
+    <div class="about-copy">
+      <p class="eyebrow-plate">O TRENERZE</p>
+      <h2>TRENING TO&nbsp;RZEMIOSŁO.<br>JA&nbsp;JESTEM&nbsp;KOWALEM.</h2>
+      <p class="lead">
+        Nazywam się <strong>[Imię i Nazwisko Trenera]</strong> — trener personalny specjalizujący się w treningu siłowym, budowaniu masy i redukcji tkanki tłuszczowej u osób, które chcą realnych efektów, a nie kolejnego planu z Instagrama.
+      </p>
+      <p>
+        Zero magicznych diet. Zero „30 dni do sześciopaku”. Tylko progresja obciążeń, poprawna technika i program dopasowany do Twojego ciała, harmonogramu i punktu startowego — czy zaczynasz od zera, czy wracasz po kontuzji, czy szykujesz się do startu.
+      </p>
+
+      <ul class="cert-list">
+        <li><span class="cert-mark">01</span> Certyfikowany trener personalny <span class="ph">[nazwa certyfikatu]</span></li>
+        <li><span class="cert-mark">02</span> Specjalizacja: trening siłowy i sylwetkowy</li>
+        <li><span class="cert-mark">03</span> Doświadczenie zawodnicze: <span class="ph">[dyscyplina / osiągnięcia]</span></li>
+      </ul>
+
+      <a href="#kontakt" class="btn btn-primary">UMÓW KONSULTACJĘ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFERTA ============ -->
+<section class="offer" id="oferta">
+  <div class="section-head">
+    <p class="eyebrow-plate">OFERTA</p>
+    <h2>WYBIERZ SWÓJ&nbsp;CIĘŻAR</h2>
+    <p class="section-sub">Trzy ścieżki. Jeden kierunek — do przodu. Każdy pakiet do modyfikacji pod Twoją ofertę.</p>
+  </div>
+
+  <div class="offer-grid">
+    <article class="offer-plate">
+      <div class="offer-plate-head">
+        <span class="offer-weight">20&nbsp;KG</span>
+        <h3>START</h3>
+      </div>
+      <p class="offer-desc">Dla osób zaczynających przygodę z siłownią. Nauka techniki, plan bazowy, kontrola postępów.</p>
+      <ul class="offer-features">
+        <li>Konsultacja + wywiad treningowy</li>
+        <li>Indywidualny plan na 4 tygodnie</li>
+        <li>Instruktaż techniki ćwiczeń</li>
+        <li>Kontakt tekstowy między sesjami</li>
+      </ul>
+      <a href="#kontakt" class="btn btn-outline">WYBIERAM START</a>
+    </article>
+
+    <article class="offer-plate offer-plate-featured">
+      <span class="offer-badge">NAJCZĘŚCIEJ WYBIERANY</span>
+      <div class="offer-plate-head">
+        <span class="offer-weight">50&nbsp;KG</span>
+        <h3>SIŁA</h3>
+      </div>
+      <p class="offer-desc">Trening personalny 1-na-1 z pełnym nadzorem. Progresja obciążeń i cotygodniowa korekta planu.</p>
+      <ul class="offer-features">
+        <li>2–3 sesje 1-na-1 w tygodniu</li>
+        <li>Plan treningowy aktualizowany co tydzień</li>
+        <li>Podstawy planu żywieniowego</li>
+        <li>Pomiary sylwetki co 2 tygodnie</li>
+        <li>Stały kontakt z trenerem</li>
+      </ul>
+      <a href="#kontakt" class="btn btn-primary">WYBIERAM SIŁĘ</a>
+    </article>
+
+    <article class="offer-plate">
+      <div class="offer-plate-head">
+        <span class="offer-weight">100&nbsp;KG</span>
+        <h3>ŻELIWO</h3>
+      </div>
+      <p class="offer-desc">Pełna transformacja pod opieką trenera. Trening, dieta, suplementacja i rozliczalność co tydzień.</p>
+      <ul class="offer-features">
+        <li>Trening 1-na-1 + plan zdalny</li>
+        <li>Pełny plan żywieniowy z korektami</li>
+        <li>Cotygodniowy raport postępów</li>
+        <li>Priorytetowy kontakt 7 dni w tygodniu</li>
+      </ul>
+      <a href="#kontakt" class="btn btn-outline">WYBIERAM ŻELIWO</a>
+    </article>
+  </div>
+</section>
+
+<!-- ============ EFEKTY / TRANSFORMACJE ============ -->
+<section class="results" id="efekty">
+  <div class="section-head light">
+    <p class="eyebrow-plate light">EFEKTY</p>
+    <h2>PRZED. PO.<br>ŻADNYCH&nbsp;FILTRÓW.</h2>
+    <p class="section-sub light">Przykładowe miejsca na realne przemiany klientów — podmień na własne zdjęcia i wyniki.</p>
+  </div>
+
+  <div class="transform-grid">
+    <article class="transform-card" aria-label="Przykładowa transformacja 1">
+      <div class="transform-frames">
+        <div class="frame-before">
+          <span class="frame-tag">PRZED</span>
+          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="70" rx="26" ry="30"/><path d="M100 100 C65 106 55 140 55 165 L55 250 L145 250 L145 165 C145 140 135 106 100 100 Z"/></svg>
+        </div>
+        <div class="frame-after">
+          <span class="frame-tag hot">PO</span>
+          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="68" rx="28" ry="32"/><path d="M100 100 C55 104 42 145 42 168 L42 250 L158 250 L158 168 C158 145 145 104 100 100 Z"/></svg>
+        </div>
+      </div>
+      <p class="transform-meta"><strong>[Imię Klienta]</strong> · <span class="ph">-12&nbsp;kg / 16 tygodni*</span></p>
+    </article>
+
+    <article class="transform-card" aria-label="Przykładowa transformacja 2">
+      <div class="transform-frames">
+        <div class="frame-before">
+          <span class="frame-tag">PRZED</span>
+          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="72" rx="24" ry="28"/><path d="M100 100 C68 105 58 138 58 160 L58 250 L142 250 L142 160 C142 138 132 105 100 100 Z"/></svg>
+        </div>
+        <div class="frame-after">
+          <span class="frame-tag hot">PO</span>
+          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="66" rx="27" ry="31"/><path d="M100 98 C52 102 40 148 40 170 L40 250 L160 250 L160 170 C160 148 148 102 100 98 Z"/></svg>
+        </div>
+      </div>
+      <p class="transform-meta"><strong>[Imię Klienta]</strong> · <span class="ph">+8&nbsp;kg masy / 20 tygodni*</span></p>
+    </article>
+
+    <article class="transform-card" aria-label="Przykładowa transformacja 3">
+      <div class="transform-frames">
+        <div class="frame-before">
+          <span class="frame-tag">PRZED</span>
+          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="71" rx="25" ry="29"/><path d="M100 100 C66 105 56 139 56 162 L56 250 L144 250 L144 162 C144 139 134 105 100 100 Z"/></svg>
+        </div>
+        <div class="frame-after">
+          <span class="frame-tag hot">PO</span>
+          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="67" rx="28" ry="32"/><path d="M100 99 C54 103 41 147 41 169 L41 250 L159 250 L159 169 C159 147 146 103 100 99 Z"/></svg>
+        </div>
+      </div>
+      <p class="transform-meta"><strong>[Imię Klienta]</strong> · <span class="ph">-9&nbsp;kg tłuszczu / 12 tygodni*</span></p>
+    </article>
+  </div>
+  <p class="results-note">* wyniki przykładowe (placeholder) — podmień na prawdziwe dane i zgody klientów przed publikacją</p>
+</section>
+
+<!-- ============ OPINIE ============ -->
+<section class="testimonials" id="opinie">
+  <div class="section-head">
+    <p class="eyebrow-plate">OPINIE</p>
+    <h2>MÓWIĄ&nbsp;CI, KTÓRZY&nbsp;PODNIEŚLI</h2>
+  </div>
+
+  <div class="testi-track">
+    <blockquote class="testi-card">
+      <p>„Pierwszy trener, który kazał mi robić mniej ćwiczeń, a nie więcej — i pierwszy raz zobaczyłem realny progres w sile.”</p>
+      <footer><span class="testi-avatar" aria-hidden="true">JK</span><div><strong>[Imię, Nazwisko]</strong><span>Klient — przykładowa opinia*</span></div></footer>
+    </blockquote>
+    <blockquote class="testi-card">
+      <p>„Plan dopasowany do mojego grafiku zmianowego. Zero wymówek, że 'nie mam czasu' — po prostu działało.”</p>
+      <footer><span class="testi-avatar" aria-hidden="true">MW</span><div><strong>[Imię, Nazwisko]</strong><span>Klient — przykładowa opinia*</span></div></footer>
+    </blockquote>
+    <blockquote class="testi-card">
+      <p>„Wróciłam do treningów po kontuzji kolana. Trzy miesiące później przysiad z ciężarem, o którym wcześniej nie śniłam.”</p>
+      <footer><span class="testi-avatar" aria-hidden="true">AS</span><div><strong>[Imię, Nazwisko]</strong><span>Klientka — przykładowa opinia*</span></div></footer>
+    </blockquote>
+    <blockquote class="testi-card">
+      <p>„Bezpośredni, wymagający, ale rozlicza się z każdego treningu. Dokładnie tego potrzebowałem.”</p>
+      <footer><span class="testi-avatar" aria-hidden="true">PR</span><div><strong>[Imię, Nazwisko]</strong><span>Klient — przykładowa opinia*</span></div></footer>
+    </blockquote>
+  </div>
+  <p class="results-note">* przykładowe opinie (placeholder) — zastąp prawdziwymi wypowiedziami klientów za ich zgodą</p>
+</section>
+
+<!-- ============ CENNIK ============ -->
+<section class="pricing" id="cennik">
+  <div class="section-head">
+    <p class="eyebrow-plate">CENNIK</p>
+    <h2>CENY&nbsp;JASNE&nbsp;JAK&nbsp;STAL</h2>
+    <p class="section-sub">Przykładowy cennik — dopasuj stawki do swojej oferty i lokalizacji.</p>
+  </div>
+
+  <div class="price-table">
+    <div class="price-row price-row-head">
+      <span>USŁUGA</span><span>CZAS</span><span>CENA*</span><span></span>
+    </div>
+    <div class="price-row">
+      <span>Trening personalny — pojedyncza sesja</span><span>60 min</span><span>150&nbsp;zł</span>
+      <a href="#kontakt" class="btn btn-outline btn-sm">ZAPYTAJ</a>
+    </div>
+    <div class="price-row">
+      <span>Karnet 8 sesji</span><span>8×60 min</span><span>1&nbsp;080&nbsp;zł</span>
+      <a href="#kontakt" class="btn btn-outline btn-sm">ZAPYTAJ</a>
+    </div>
+    <div class="price-row price-row-hot">
+      <span>Pakiet SIŁA — miesięczny</span><span>4 tyg.</span><span>1&nbsp;600&nbsp;zł</span>
+      <a href="#kontakt" class="btn btn-primary btn-sm">ZAPYTAJ</a>
+    </div>
+    <div class="price-row">
+      <span>Plan treningowy online (bez nadzoru)</span><span>4 tyg.</span><span>350&nbsp;zł</span>
+      <a href="#kontakt" class="btn btn-outline btn-sm">ZAPYTAJ</a>
+    </div>
+    <div class="price-row">
+      <span>Konsultacja + analiza sylwetki</span><span>45 min</span><span>120&nbsp;zł</span>
+      <a href="#kontakt" class="btn btn-outline btn-sm">ZAPYTAJ</a>
+    </div>
+  </div>
+  <p class="results-note">* ceny przykładowe (placeholder) — podmień na aktualny cennik</p>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section class="contact" id="kontakt">
+  <div class="hero-hazard-top" aria-hidden="true"></div>
+  <div class="contact-inner">
+    <div class="contact-copy">
+      <p class="eyebrow-plate light">ZACZNIJ&nbsp;TERAZ</p>
+      <h2>KONIEC&nbsp;GADANIA.<br>CZAS&nbsp;NA&nbsp;PIERWSZY&nbsp;TRENING.</h2>
+      <p class="section-sub light">
+        Wypełnij formularz, a trener skontaktuje się w ciągu 24 godzin, by ustalić termin bezpłatnej konsultacji.
+      </p>
+      <ul class="contact-info">
+        <li><span class="ci-label">TELEFON</span><span class="ph">[+48 000 000 000]</span></li>
+        <li><span class="ci-label">E-MAIL</span><span class="ph">[kontakt@zelazo-trening.pl]</span></li>
+        <li><span class="ci-label">SIŁOWNIA</span><span class="ph">[Nazwa i adres siłowni]</span></li>
+      </ul>
+    </div>
+
+    <form class="contact-form" id="contactForm" novalidate>
+      <p class="form-note">Formularz demonstracyjny — podłącz własną obsługę wysyłki (np. e-mail, CRM) przed publikacją.</p>
+
+      <div class="field">
+        <label for="name">IMIĘ I NAZWISKO</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="email">E-MAIL</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone">TELEFON</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel">
+        </div>
+      </div>
+      <div class="field">
+        <label for="goal">TWÓJ CEL</label>
+        <select id="goal" name="goal">
+          <option value="masa">Budowa masy mięśniowej</option>
+          <option value="redukcja">Redukcja tkanki tłuszczowej</option>
+          <option value="sila">Siła i technika</option>
+          <option value="powrot">Powrót po kontuzji</option>
+          <option value="inne">Inne</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">WIADOMOŚĆ</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">WYŚLIJ ZGŁOSZENIE</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a href="#top" class="brand brand-footer">
+      <span class="brand-plate">Ż</span>
+      <span class="brand-text">ŻELAZO<span class="brand-sub">TRENING&nbsp;PERSONALNY</span></span>
+    </a>
+    <nav class="footer-nav" aria-label="Nawigacja w stopce">
+      <a href="#o-mnie">O mnie</a>
+      <a href="#oferta">Oferta</a>
+      <a href="#efekty">Efekty</a>
+      <a href="#opinie">Opinie</a>
+      <a href="#cennik">Cennik</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <p class="footer-legal">© <span id="year"></span> ŻELAZO — szablon strony dla trenera personalnego. Wszystkie dane, zdjęcia i opinie na tej stronie są przykładowe (placeholder) i wymagają podmiany przed publikacją.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
