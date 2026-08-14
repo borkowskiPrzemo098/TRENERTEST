@@ -155,6 +155,8 @@ p{ margin:0; }
 
 .section-head{ max-width: 760px; margin: 0 auto 56px; padding: 0 28px; text-align:center; }
 .section-head h2{ font-size: clamp(2.1rem, 4.6vw, 3.3rem); line-height: 1.03; }
+.heading-link{ transition: color .18s ease; }
+.heading-link:hover, .heading-link:focus-visible{ color: var(--ember-hot); }
 .section-sub{
   margin-top: 18px; color: var(--paper-dim); font-size: 1.05rem; max-width: var(--measure);
   margin-left:auto; margin-right:auto;
@@ -351,8 +353,14 @@ p{ margin:0; }
    ========================================================= */
 .testimonials{ padding: 100px 0 110px; background: var(--ink); }
 .testi-track{
-  display:flex; gap: 22px; overflow-x:auto; padding: 0 28px 10px;
+  display:flex; gap: 22px; overflow-x:auto; overflow-y: hidden;
+  padding: 0 28px 10px;
+  max-width: 1140px; margin: 0 auto;
+  justify-content: center;
   scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  scroll-behavior: smooth;
 }
 .testi-track::-webkit-scrollbar{ height:8px; }
 .testi-track::-webkit-scrollbar-thumb{ background: var(--line); }
@@ -361,6 +369,14 @@ p{ margin:0; }
   flex: 0 0 340px; scroll-snap-align:start;
   background: var(--surface); border: 1px solid var(--line);
   padding: 30px 26px; margin:0;
+}
+
+/* Below ~4 cards' width the row can no longer center itself without
+   breaking the scroll (centered flex content scrolls asymmetrically);
+   pack it to the start instead so every card, including the first, is
+   reachable and the swipe feels natural. */
+@media (max-width: 1120px){
+  .testi-track{ justify-content: flex-start; }
 }
 .testi-card p{ font-size: 1.02rem; color: var(--paper); line-height:1.55; }
 .testi-card footer{ display:flex; align-items:center; gap:12px; margin-top:22px; }
@@ -473,13 +489,8 @@ textarea{ resize: vertical; }
 }
 
 /* =========================================================
-   Motion baseline — elements Motion (JS) animates start hidden
-   only when JS is available, so content never disappears without it.
+   Motion baseline — content is visible by default, always.
+   Motion (JS) sets its own "from" opacity right before animating,
+   so a slow/blocked CDN or a script error never leaves real
+   content (nav, CTAs, prices) permanently invisible.
    ========================================================= */
-.js [data-reveal],
-.js .reveal-child{
-  opacity: 0;
-}
-@media (prefers-reduced-motion: reduce){
-  .js [data-reveal], .js .reveal-child{ opacity: 1 !important; }
-}
