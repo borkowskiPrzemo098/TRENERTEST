@@ -371,7 +371,15 @@ p{ margin:0; }
   display:flex; gap: 22px; overflow-x:auto; overflow-y: hidden;
   padding: 0 28px 10px;
   max-width: 1140px; margin: 0 auto;
-  justify-content: center;
+  /* Always flex-start (never center): 4 cards at 340px plus gaps run
+     ~1480px wide, wider than this 1140px box on ANY screen — centering
+     that overflow made the box show a cropped middle slice by default,
+     cutting the first card off on the left on every device, not just
+     narrow ones. Left-aligned is the correct, standard behavior for an
+     overflowing horizontal card row: it starts clean on the first card,
+     the outer max-width+margin:auto still centers the row *as a block*
+     on wide viewports where it fits. */
+  justify-content: flex-start;
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
@@ -384,14 +392,6 @@ p{ margin:0; }
   flex: 0 0 340px; scroll-snap-align:start;
   background: var(--surface); border: 1px solid var(--line);
   padding: 30px 26px; margin:0;
-}
-
-/* Below ~4 cards' width the row can no longer center itself without
-   breaking the scroll (centered flex content scrolls asymmetrically);
-   pack it to the start instead so every card, including the first, is
-   reachable and the swipe feels natural. */
-@media (max-width: 1120px){
-  .testi-track{ justify-content: flex-start; }
 }
 .testi-card p{ font-size: 1.02rem; color: var(--paper); line-height:1.55; }
 .testi-card footer{ display:flex; align-items:center; gap:12px; margin-top:22px; }
