@@ -112,10 +112,10 @@ p{ margin:0; }
   border-top: 1px solid var(--line);
 }
 .mobile-nav a{
-  font-family: var(--ff-label); font-weight:600; letter-spacing:.1em; font-size:.95rem;
-  padding: 12px 0; border-bottom: 1px solid var(--surface); color: var(--paper-dim);
+  font-family: var(--ff-label); font-weight:600; letter-spacing:.06em; font-size:1.05rem;
+  padding: 14px 0; border-bottom: 1px solid var(--surface); color: var(--paper-dim);
 }
-.mobile-nav .nav-cta{ text-align:center; margin-top:12px; border-bottom:none; }
+.mobile-nav .nav-cta{ text-align:center; margin-top:12px; border-bottom:none; color: #fff; }
 
 @media (max-width: 880px){
   .main-nav{ display:none; }
@@ -504,17 +504,21 @@ textarea{ resize: vertical; }
 }
 .bottom-nav a{
   flex: 1 1 0; min-width: 0;
-  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
   padding: 6px 1px;
-  color: var(--paper-faint);
-  font-family: var(--ff-label); font-weight: 700; font-size: .54rem; letter-spacing: .01em;
+  color: var(--paper-dim);
+  font-family: var(--ff-label); font-weight: 700; font-size: .66rem; letter-spacing: 0;
   border-radius: var(--radius);
   transition: color .15s ease;
   white-space: nowrap;
 }
 .bottom-nav a svg{
-  width: 19px; height: 19px; flex: none; fill: none; stroke: currentColor;
+  width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor;
   stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+@media (max-width: 360px){
+  .bottom-nav a{ font-size: .6rem; }
+  .bottom-nav a svg{ width: 20px; height: 20px; }
 }
 .bottom-nav a.active,
 .bottom-nav a:active{ color: var(--paper); }
@@ -530,15 +534,15 @@ textarea{ resize: vertical; }
    SCROLL TO TOP
    ========================================================= */
 .scroll-top{
-  position: fixed; right: 20px; bottom: 28px; z-index: 590;
+  position: fixed; right: 20px; bottom: 28px; z-index: 700;
   width: 46px; height: 46px;
   display: flex; align-items: center; justify-content: center;
   background: var(--ember); color: #fff;
   border: 1px solid var(--ember-hot);
-  opacity: 0; visibility: hidden; transform: translateY(10px);
-  transition: opacity .25s ease, transform .25s ease, background .15s ease, visibility .25s;
+  opacity: 0; pointer-events: none; transform: translateY(10px);
+  transition: opacity .25s ease, transform .25s ease, background .15s ease;
 }
-.scroll-top.visible{ opacity: 1; visibility: visible; transform: translateY(0); }
+.scroll-top.visible{ opacity: 1; pointer-events: auto; transform: translateY(0); }
 .scroll-top:hover{ background: var(--ember-hot); }
 .scroll-top svg{
   width: 20px; height: 20px; fill: none; stroke: currentColor;
@@ -546,7 +550,7 @@ textarea{ resize: vertical; }
 }
 
 @media (max-width: 880px){
-  .scroll-top{ right: 16px; bottom: calc(66px + env(safe-area-inset-bottom)); width: 42px; height: 42px; }
+  .scroll-top{ right: 16px; bottom: calc(84px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
 }
 
 /* =========================================================

@@ -88,7 +88,6 @@ if (!reduceMotion) {
   import("https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm")
     .then(function (motion) {
       var animate = motion.animate;
-      var inView = motion.inView;
       var stagger = motion.stagger;
 
       function safe(fn) {
@@ -119,7 +118,12 @@ if (!reduceMotion) {
         }
       });
 
-      // Scroll reveals: sections/cards fade+lift in as they enter view
+      // Scroll reveals: sections/cards fade+lift in as they enter view —
+      // ONCE each. Using a plain IntersectionObserver (instead of Motion's
+      // inView, which keeps re-firing every time an element re-enters the
+      // viewport) so every element unobserves itself right after its first
+      // reveal. Without this, scrolling up and down made sections flicker
+      // as they replayed their entrance animation on every pass.
       var revealGroups = [
         ".about-media", ".about-copy > *",
         ".offer-plate",
@@ -130,29 +134,38 @@ if (!reduceMotion) {
         ".contact-copy > *", ".contact-form",
       ];
 
-      revealGroups.forEach(function (selector) {
-        safe(function () {
-          var els = document.querySelectorAll(selector);
-          if (!els.length) return;
-          inView(
-            selector,
-            function (info) {
+      if ("IntersectionObserver" in window) {
+        var revealed = new WeakSet();
+        var revealObserver = new IntersectionObserver(
+          function (entries, obs) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting || revealed.has(entry.target)) return;
+              revealed.add(entry.target);
+              obs.unobserve(entry.target);
               safe(function () {
-                var siblings = Array.from(info.target.parentElement.children).filter(function (c) {
-                  return c.matches(selector);
+                var siblings = Array.from(entry.target.parentElement.children).filter(function (c) {
+                  return revealGroups.some(function (sel) { return c.matches(sel); });
                 });
-                var index = siblings.indexOf(info.target);
+                var index = siblings.indexOf(entry.target);
                 animate(
-                  info.target,
+                  entry.target,
                   { opacity: [0, 1], y: [22, 0] },
                   { duration: 0.55, delay: Math.min(Math.max(index, 0), 6) * 0.06, easing: [0.16, 0.8, 0.24, 1] }
                 );
               });
-            },
-            { margin: "0px 0px -10% 0px", amount: 0.2 }
-          );
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.2 }
+        );
+
+        revealGroups.forEach(function (selector) {
+          safe(function () {
+            document.querySelectorAll(selector).forEach(function (el) {
+              revealObserver.observe(el);
+            });
+          });
         });
-      });
+      }
 
       // Micro-interaction: primary buttons get a soft hover lift
       safe(function () {
