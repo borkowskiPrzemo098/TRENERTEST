@@ -27,9 +27,12 @@
 }
 
 *, *::before, *::after{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; }
+html{ scroll-behavior: smooth; overflow-x: hidden; }
 body{
   margin:0;
+  overflow-x: hidden; /* safety net: a long non-breaking heading phrase (see
+    h1,h2,h3 below) must never be able to widen the whole page and create
+    horizontal scroll on narrow phones — this guarantees it can't. */
   background: var(--ink);
   color: var(--paper);
   font-family: var(--ff-body);
@@ -40,7 +43,14 @@ body{
 img, svg{ display:block; max-width:100%; }
 a{ color: inherit; text-decoration:none; }
 ul{ margin:0; padding:0; list-style:none; }
-h1,h2,h3{ margin:0; font-family: var(--ff-display); font-weight:400; letter-spacing:-0.01em; text-transform:uppercase; }
+h1,h2,h3{
+  margin:0; font-family: var(--ff-display); font-weight:400; letter-spacing:-0.01em; text-transform:uppercase;
+  /* Headings use &nbsp; between some word pairs to stop awkward mid-phrase
+     wraps. On very narrow phones that non-breaking pair can be wider than
+     the viewport itself — this lets the browser break inside it as a last
+     resort instead of the phrase overflowing past the screen edge. */
+  overflow-wrap: anywhere;
+}
 p{ margin:0; }
 
 ::selection{ background: var(--ember); color: #fff; }
