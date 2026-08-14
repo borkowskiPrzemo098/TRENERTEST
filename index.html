@@ -53,26 +53,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
-  <svg class="hero-bg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <radialGradient id="heroGlow" cx="78%" cy="18%" r="65%">
-        <stop offset="0%" stop-color="#e2431d" stop-opacity="0.22"/>
-        <stop offset="100%" stop-color="#e2431d" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <rect width="1600" height="1000" fill="url(#heroGlow)"/>
-    <g class="hero-bar" stroke="#3a3a3f" stroke-width="3" fill="none" opacity="0.55">
-      <line x1="140" y1="560" x2="1720" y2="560"/>
-      <rect x="150" y="500" width="26" height="120" rx="3"/>
-      <rect x="182" y="470" width="34" height="180" rx="3"/>
-      <rect x="222" y="440" width="40" height="240" rx="3"/>
-      <ellipse class="hero-plate-hot" cx="1300" cy="560" rx="150" ry="150" stroke="#e2431d" stroke-width="4" opacity="0.5"/>
-      <ellipse cx="1300" cy="560" rx="110" ry="110"/>
-      <ellipse cx="1300" cy="560" rx="46" ry="46"/>
-      <ellipse cx="1470" cy="560" rx="90" ry="90"/>
-      <ellipse cx="1470" cy="560" rx="34" ry="34"/>
-    </g>
-  </svg>
+  <img class="hero-photo" id="heroPhoto"
+       src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1600&q=70&auto=format&fit=crop"
+       srcset="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=900&q=65&auto=format&fit=crop 900w,
+               https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1600&q=70&auto=format&fit=crop 1600w,
+               https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=2200&q=65&auto=format&fit=crop 2200w"
+       sizes="100vw"
+       alt="" role="presentation" fetchpriority="high">
+  <div class="hero-photo-overlay" aria-hidden="true"></div>
   <div class="hero-inner">
     <p class="tag" data-reveal>TRENING PERSONALNY</p>
 
@@ -101,18 +89,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <!-- ============ O MNIE ============ -->
 <section class="about" id="o-mnie">
   <div class="about-inner">
-    <div class="about-media" aria-hidden="true">
+    <div class="about-media">
       <div class="silhouette-frame">
-        <svg viewBox="0 0 400 480" class="silhouette">
-          <rect width="400" height="480" class="sil-bg"/>
-          <g class="sil-figure">
-            <ellipse cx="200" cy="90" rx="46" ry="52"/>
-            <path d="M200 140 C120 150 90 210 90 260 L90 430 C90 450 110 460 130 460 L140 340 L145 460 C145 460 200 470 255 460 L260 340 L270 460 C290 460 310 450 310 430 L310 260 C310 210 280 150 200 140 Z"/>
-            <path d="M90 240 L40 320 L60 340 L110 275 Z"/>
-            <path d="M310 240 L360 320 L340 340 L290 275 Z"/>
-          </g>
-        </svg>
-        <span class="media-tag">SYLWETKA — MIEJSCE NA TWOJE ZDJĘCIE</span>
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=70&auto=format&fit=crop"
+             alt="Zdjęcie poglądowe: przygotowanie do martwego ciągu na siłowni" loading="lazy" width="800" height="960">
+        <span class="media-tag">ZDJĘCIE PRZYKŁADOWE — PODMIEŃ NA WŁASNE</span>
       </div>
       <div class="stat-card">
         <span class="src-num">12</span>
@@ -143,6 +124,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <!-- ============ OFERTA ============ -->
 <section class="offer" id="oferta">
+  <div class="offer-photo-wash" aria-hidden="true"></div>
   <div class="section-head">
     <p class="eyebrow">OFERTA</p>
     <h2>WYBIERZ SWÓJ&nbsp;CIĘŻAR</h2>
@@ -209,48 +191,33 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   <div class="transform-grid">
     <article class="transform-card" aria-label="Przykładowa transformacja 1">
-      <div class="transform-frames">
-        <div class="frame-before">
-          <span class="frame-tag">PRZED</span>
-          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="70" rx="26" ry="30"/><path d="M100 100 C65 106 55 140 55 165 L55 250 L145 250 L145 165 C145 140 135 106 100 100 Z"/></svg>
-        </div>
-        <div class="frame-after">
-          <span class="frame-tag hot">PO</span>
-          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="68" rx="28" ry="32"/><path d="M100 100 C55 104 42 145 42 168 L42 250 L158 250 L158 168 C158 145 145 104 100 100 Z"/></svg>
-        </div>
+      <div class="transform-photo">
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=700&q=68&auto=format&fit=crop"
+             alt="Zdjęcie poglądowe: przysiad ze sztangą na siłowni" loading="lazy" width="700" height="500">
+        <span class="frame-tag">ZDJĘCIE PRZYKŁADOWE</span>
       </div>
       <p class="transform-meta"><strong>[Imię Klienta]</strong> · <span class="ph">-12&nbsp;kg / 16 tygodni*</span></p>
     </article>
 
     <article class="transform-card" aria-label="Przykładowa transformacja 2">
-      <div class="transform-frames">
-        <div class="frame-before">
-          <span class="frame-tag">PRZED</span>
-          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="72" rx="24" ry="28"/><path d="M100 100 C68 105 58 138 58 160 L58 250 L142 250 L142 160 C142 138 132 105 100 100 Z"/></svg>
-        </div>
-        <div class="frame-after">
-          <span class="frame-tag hot">PO</span>
-          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="66" rx="27" ry="31"/><path d="M100 98 C52 102 40 148 40 170 L40 250 L160 250 L160 170 C160 148 148 102 100 98 Z"/></svg>
-        </div>
+      <div class="transform-photo">
+        <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=700&q=68&auto=format&fit=crop"
+             alt="Zdjęcie poglądowe: martwy ciąg, ujęcie z góry" loading="lazy" width="700" height="500">
+        <span class="frame-tag">ZDJĘCIE PRZYKŁADOWE</span>
       </div>
       <p class="transform-meta"><strong>[Imię Klienta]</strong> · <span class="ph">+8&nbsp;kg masy / 20 tygodni*</span></p>
     </article>
 
     <article class="transform-card" aria-label="Przykładowa transformacja 3">
-      <div class="transform-frames">
-        <div class="frame-before">
-          <span class="frame-tag">PRZED</span>
-          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="71" rx="25" ry="29"/><path d="M100 100 C66 105 56 139 56 162 L56 250 L144 250 L144 162 C144 139 134 105 100 100 Z"/></svg>
-        </div>
-        <div class="frame-after">
-          <span class="frame-tag hot">PO</span>
-          <svg viewBox="0 0 200 260" aria-hidden="true"><rect width="200" height="260" class="ph-bg"/><ellipse cx="100" cy="67" rx="28" ry="32"/><path d="M100 99 C54 103 41 147 41 169 L41 250 L159 250 L159 169 C159 147 146 103 100 99 Z"/></svg>
-        </div>
+      <div class="transform-photo">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=700&q=68&auto=format&fit=crop"
+             alt="Zdjęcie poglądowe: hantle na stojaku siłowni" loading="lazy" width="700" height="500">
+        <span class="frame-tag">ZDJĘCIE PRZYKŁADOWE</span>
       </div>
       <p class="transform-meta"><strong>[Imię Klienta]</strong> · <span class="ph">-9&nbsp;kg tłuszczu / 12 tygodni*</span></p>
     </article>
   </div>
-  <p class="results-note">* wyniki przykładowe (placeholder) — podmień na prawdziwe dane i zgody klientów przed publikacją</p>
+  <p class="results-note">* zdjęcia i wyniki przykładowe (placeholder) — podmień na prawdziwe zdjęcia przed/po i dane klientów za ich zgodą przed publikacją</p>
 </section>
 
 <!-- ============ OPINIE ============ -->
@@ -319,6 +286,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <!-- ============ KONTAKT ============ -->
 <section class="contact" id="kontakt">
+  <div class="contact-photo-wash" aria-hidden="true"></div>
   <div class="contact-inner">
     <div class="contact-copy">
       <p class="eyebrow light">ZACZNIJ&nbsp;TERAZ</p>

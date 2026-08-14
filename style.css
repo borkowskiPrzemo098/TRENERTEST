@@ -174,18 +174,25 @@ p{ margin:0; }
   overflow: hidden;
   background: var(--ink);
   border-bottom: 1px solid var(--line);
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
 }
-.hero-bg{
+.hero-photo{
   position: absolute; inset: 0; width: 100%; height: 100%;
-  z-index: 0;
+  object-fit: cover; object-position: 55% 30%;
+  z-index: 0; filter: grayscale(.25) contrast(1.05);
+}
+.hero-photo-overlay{
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(90deg, rgba(11,11,12,.94) 0%, rgba(11,11,12,.8) 42%, rgba(11,11,12,.35) 78%, rgba(11,11,12,.55) 100%),
+    linear-gradient(180deg, rgba(11,11,12,.25), rgba(11,11,12,.55) 70%, var(--ink) 100%),
+    radial-gradient(900px 500px at 82% 12%, rgba(226,67,29,.24), transparent 60%);
 }
 .hero-inner{
   position: relative; z-index: 1;
   max-width: 900px; margin: 0 auto; padding: 120px 28px 96px;
-}
-
-@media (max-width: 780px){
-  .hero-bar{ opacity: .3 !important; }
 }
 .hero-title{ font-size: clamp(2.9rem, 8.6vw, 6.6rem); line-height: .96; }
 .hero-title .line{ display:block; }
@@ -222,9 +229,7 @@ p{ margin:0; }
   position:relative; background: var(--surface);
   border: 1px solid var(--line);
 }
-.silhouette{ width:100%; height:auto; }
-.sil-bg{ fill: var(--surface-2); }
-.sil-figure{ fill: #0e0e10; }
+.silhouette-frame img{ width:100%; height:auto; display:block; filter: grayscale(.15) contrast(1.05); }
 .media-tag{
   position:absolute; left:0; right:0; bottom:0;
   background: rgba(11,11,12,.86); color: var(--paper-faint);
@@ -262,7 +267,14 @@ p{ margin:0; }
 /* =========================================================
    OFFER
    ========================================================= */
-.offer{ padding: 110px 28px; background: var(--ink); }
+.offer{ position: relative; padding: 110px 28px; background: var(--ink); overflow: hidden; }
+.offer-photo-wash{
+  position: absolute; inset: 0; z-index: 0; opacity: .16;
+  background:
+    linear-gradient(180deg, var(--ink) 0%, transparent 30%, transparent 70%, var(--ink) 100%),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1800&q=55&auto=format&fit=crop") center/cover;
+}
+.offer > *:not(.offer-photo-wash){ position: relative; z-index: 1; }
 .offer-grid{
   max-width: 1140px; margin: 0 auto; display:grid;
   grid-template-columns: repeat(3, 1fr); gap: 24px;
@@ -310,20 +322,20 @@ p{ margin:0; }
 }
 .transform-card{
   background: var(--surface); border: 1px solid var(--line);
+  overflow: hidden;
 }
-.transform-frames{ display:grid; grid-template-columns: 1fr 1fr; }
-.frame-before, .frame-after{ position:relative; }
-.frame-before{ border-right: 1px solid var(--line); }
-.ph-bg{ fill: var(--surface-2); }
-.frame-before svg, .frame-after svg{ width:100%; height:auto; }
-.frame-before path, .frame-before ellipse{ fill: #45454a; }
-.frame-after path, .frame-after ellipse{ fill: var(--ember); }
+.transform-photo{ position: relative; }
+.transform-photo img{
+  width:100%; height:220px; object-fit: cover; display:block;
+  filter: grayscale(.2) contrast(1.05);
+  transition: transform .5s cubic-bezier(.16,.8,.24,1);
+}
+.transform-card:hover .transform-photo img{ transform: scale(1.04); }
 .frame-tag{
-  position:absolute; top:10px; left:10px; background: rgba(11,11,12,.85);
-  color: var(--paper); font-family: var(--ff-label); font-size:.68rem; letter-spacing:.12em;
-  padding: 4px 9px; font-weight:700;
+  position:absolute; top:12px; left:12px; background: rgba(11,11,12,.82);
+  color: var(--paper); font-family: var(--ff-label); font-size:.66rem; letter-spacing:.12em;
+  padding: 5px 10px; font-weight:700;
 }
-.frame-tag.hot{ background: var(--ember); }
 .transform-meta{
   padding: 16px 18px; font-size:.88rem; color: var(--paper-dim);
   border-top: 1px solid var(--line);
@@ -390,8 +402,16 @@ p{ margin:0; }
 /* =========================================================
    CONTACT
    ========================================================= */
-.contact{ background: var(--ink); border-top: 1px solid var(--line); }
+.contact{ position: relative; background: var(--ink); border-top: 1px solid var(--line); overflow: hidden; }
+.contact-photo-wash{
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(90deg, var(--ink) 0%, rgba(11,11,12,.75) 45%, rgba(11,11,12,.92) 100%),
+    url("https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1800&q=55&auto=format&fit=crop") right center/cover;
+  opacity: .5;
+}
 .contact-inner{
+  position: relative; z-index: 1;
   max-width: 1140px; margin:0 auto; padding: 100px 28px 110px;
   display:grid; grid-template-columns: 1fr 1fr; gap: 72px;
 }
