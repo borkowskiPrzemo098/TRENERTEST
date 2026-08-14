@@ -94,13 +94,16 @@ if (!reduceMotion) {
         try { fn(); } catch (err) { /* animation is decorative only — never block content */ }
       }
 
-      // Hero: one authored entrance, staggered
+      // Hero: one authored entrance, staggered. Transform only, no opacity —
+      // an opacity keyframe here could leave the headline invisible if the
+      // animation stalls (the same failure mode that broke the scroll-top
+      // button); a small vertical settle is worth doing, content never is.
       safe(function () {
         var heroItems = document.querySelectorAll("#hero [data-reveal]");
         if (heroItems.length) {
           animate(
             heroItems,
-            { opacity: [0, 1], y: [16, 0] },
+            { y: [16, 0] },
             { duration: 0.6, delay: stagger(0.08), easing: [0.16, 0.8, 0.24, 1] }
           );
         }
@@ -118,54 +121,13 @@ if (!reduceMotion) {
         }
       });
 
-      // Scroll reveals: sections/cards fade+lift in as they enter view —
-      // ONCE each. Using a plain IntersectionObserver (instead of Motion's
-      // inView, which keeps re-firing every time an element re-enters the
-      // viewport) so every element unobserves itself right after its first
-      // reveal. Without this, scrolling up and down made sections flicker
-      // as they replayed their entrance animation on every pass.
-      var revealGroups = [
-        ".about-media", ".about-copy > *",
-        ".offer-plate",
-        ".transform-card",
-        ".testi-card",
-        ".price-row:not(.price-row-head)",
-        ".section-head",
-        ".contact-copy > *", ".contact-form",
-      ];
-
-      if ("IntersectionObserver" in window) {
-        var revealed = new WeakSet();
-        var revealObserver = new IntersectionObserver(
-          function (entries, obs) {
-            entries.forEach(function (entry) {
-              if (!entry.isIntersecting || revealed.has(entry.target)) return;
-              revealed.add(entry.target);
-              obs.unobserve(entry.target);
-              safe(function () {
-                var siblings = Array.from(entry.target.parentElement.children).filter(function (c) {
-                  return revealGroups.some(function (sel) { return c.matches(sel); });
-                });
-                var index = siblings.indexOf(entry.target);
-                animate(
-                  entry.target,
-                  { opacity: [0, 1], y: [22, 0] },
-                  { duration: 0.55, delay: Math.min(Math.max(index, 0), 6) * 0.06, easing: [0.16, 0.8, 0.24, 1] }
-                );
-              });
-            });
-          },
-          { rootMargin: "0px 0px -10% 0px", threshold: 0.2 }
-        );
-
-        revealGroups.forEach(function (selector) {
-          safe(function () {
-            document.querySelectorAll(selector).forEach(function (el) {
-              revealObserver.observe(el);
-            });
-          });
-        });
-      }
+      // NOTE: an earlier version animated sections/cards in as they scrolled
+      // into view (fade + lift, once each via IntersectionObserver). It was
+      // removed: on some phones and even on desktop it produced a visible
+      // flicker — the opacity transition could stall mid-flight under
+      // load, and with dozens of observed elements this was constant and
+      // reproducible. Content simply renders normally now; only the hero's
+      // one-time entrance and the button hover lift remain animated.
 
       // Micro-interaction: primary buttons get a soft hover lift
       safe(function () {

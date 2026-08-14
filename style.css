@@ -536,13 +536,16 @@ textarea{ resize: vertical; }
 .scroll-top{
   position: fixed; right: 20px; bottom: 28px; z-index: 700;
   width: 46px; height: 46px;
-  display: flex; align-items: center; justify-content: center;
+  display: none; align-items: center; justify-content: center;
   background: var(--ember); color: #fff;
   border: 1px solid var(--ember-hot);
-  opacity: 0; pointer-events: none; transform: translateY(10px);
-  transition: opacity .25s ease, transform .25s ease, background .15s ease;
+  transition: background .15s ease;
 }
-.scroll-top.visible{ opacity: 1; pointer-events: auto; transform: translateY(0); }
+/* Plain display toggle, no opacity/transform transition: a CSS transition
+   that stalls mid-flight (observed on some mobile browsers under load)
+   left the button stuck invisible-but-present. display has nothing to
+   get stuck in — it is on or it isn't. */
+.scroll-top.visible{ display: flex; }
 .scroll-top:hover{ background: var(--ember-hot); }
 .scroll-top svg{
   width: 20px; height: 20px; fill: none; stroke: currentColor;
