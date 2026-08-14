@@ -101,6 +101,11 @@ p{ margin:0; }
   font-weight:700;
 }
 .nav-cta:hover{ background: var(--ember-hot); }
+/* ".main-nav a" (class+type = two selector components) is more specific
+   than ".nav-cta" (one component) and was silently winning, leaving the
+   desktop CTA in the dim link color instead of white. Same bug as the
+   mobile dropdown had; fixed the same way, at the same specificity. */
+.main-nav .nav-cta{ color: #fff; }
 
 .nav-toggle{
   display:none; flex-direction:column; gap:5px; width:34px; padding:0;
@@ -554,6 +559,24 @@ textarea{ resize: vertical; }
 
 @media (max-width: 880px){
   .scroll-top{ right: 16px; bottom: calc(84px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
+}
+
+/* =========================================================
+   SCROLL REVEAL — plain CSS transition, no animation library.
+   The "reveal" class (which starts things at opacity:0) is only ever
+   added by JS right before observing an element, and "in" is added the
+   moment it's actually visible — so a page with JS disabled/blocked
+   never has anything hidden in the first place, and there is no library
+   animation state that can stall mid-flight.
+   ========================================================= */
+.reveal{
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s cubic-bezier(.16,.8,.24,1), transform .6s cubic-bezier(.16,.8,.24,1);
+}
+.reveal.in{ opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1; transform: none; transition: none; }
 }
 
 /* =========================================================

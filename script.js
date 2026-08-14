@@ -90,6 +90,43 @@ if (bottomNavLinks.length && "IntersectionObserver" in window) {
   sectionEls.forEach(function (el) { sectionObserver.observe(el); });
 }
 
+// ---- Scroll reveal: sections/cards fade + lift in, once each, as they
+// enter view. Plain CSS transition driven by IntersectionObserver — no
+// animation library involved, so this can't stall or fight with anything
+// Motion does. Elements only ever get the "reveal" (hidden) class here,
+// right before being observed, so if JS never runs at all nothing is
+// ever hidden in the first place. ----
+if ("IntersectionObserver" in window) {
+  var revealSelectors = [
+    ".about-media", ".about-copy > *",
+    ".offer-plate",
+    ".transform-card",
+    ".testi-card",
+    ".price-row:not(.price-row-head)",
+    ".section-head",
+    ".contact-copy > *", ".contact-form",
+  ];
+
+  var revealObserver = new IntersectionObserver(
+    function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in");
+        obs.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -8% 0px", threshold: 0.15 }
+  );
+
+  revealSelectors.forEach(function (selector) {
+    document.querySelectorAll(selector).forEach(function (el, i) {
+      el.classList.add("reveal");
+      el.style.transitionDelay = Math.min(i % 6, 5) * 70 + "ms";
+      revealObserver.observe(el);
+    });
+  });
+}
+
 // ---- Motion enhancements (optional, never load-bearing) ----
 var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
