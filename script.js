@@ -125,6 +125,19 @@ if ("IntersectionObserver" in window) {
       revealObserver.observe(el);
     });
   });
+
+  // Hero: same fade+lift, but it's above the fold on load, so it plays
+  // immediately instead of waiting on the scroll observer.
+  var heroItems = document.querySelectorAll("#hero [data-reveal]");
+  heroItems.forEach(function (el, i) {
+    el.classList.add("reveal");
+    el.style.transitionDelay = i * 90 + "ms";
+  });
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      heroItems.forEach(function (el) { el.classList.add("in"); });
+    });
+  });
 }
 
 // ---- Motion enhancements (optional, never load-bearing) ----
@@ -134,26 +147,10 @@ if (!reduceMotion) {
   import("https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm")
     .then(function (motion) {
       var animate = motion.animate;
-      var stagger = motion.stagger;
 
       function safe(fn) {
         try { fn(); } catch (err) { /* animation is decorative only — never block content */ }
       }
-
-      // Hero: one authored entrance, staggered. Transform only, no opacity —
-      // an opacity keyframe here could leave the headline invisible if the
-      // animation stalls (the same failure mode that broke the scroll-top
-      // button); a small vertical settle is worth doing, content never is.
-      safe(function () {
-        var heroItems = document.querySelectorAll("#hero [data-reveal]");
-        if (heroItems.length) {
-          animate(
-            heroItems,
-            { y: [16, 0] },
-            { duration: 0.6, delay: stagger(0.08), easing: [0.16, 0.8, 0.24, 1] }
-          );
-        }
-      });
 
       // Hero photo: slow Ken Burns drift
       safe(function () {
