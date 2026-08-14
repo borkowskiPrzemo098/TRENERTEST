@@ -27,6 +27,25 @@ if (toggle && header) {
 
 var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// ---- Hero background: slow drift on the plate mark, keeps the dark
+// field alive without competing with the headline ----
+var heroPlate = document.querySelector(".hero-bar");
+if (heroPlate && !reduceMotion) {
+  animate(
+    heroPlate,
+    { transform: ["translateX(0px) rotate(0deg)", "translateX(-18px) rotate(-1.2deg)", "translateX(0px) rotate(0deg)"] },
+    { duration: 14, easing: "ease-in-out", repeat: Infinity }
+  );
+}
+var heroGlowPlate = document.querySelector(".hero-plate-hot");
+if (heroGlowPlate && !reduceMotion) {
+  animate(
+    heroGlowPlate,
+    { opacity: [0.35, 0.7, 0.35] },
+    { duration: 5, easing: "ease-in-out", repeat: Infinity }
+  );
+}
+
 // ---- Hero: one authored entrance, staggered ----
 var heroItems = document.querySelectorAll("#hero [data-reveal]");
 if (heroItems.length) {
