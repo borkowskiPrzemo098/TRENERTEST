@@ -580,13 +580,18 @@ textarea{ resize: vertical; }
    animation state that can stall mid-flight.
    ========================================================= */
 .reveal{
-  opacity: 0;
+  /* Transform only — deliberately NOT animating opacity. Confirmed live,
+     three separate ways (a JS library, then a plain CSS transition): an
+     opacity-from-0 reveal can get stuck and leave real content (stats,
+     the about copy) permanently invisible on real devices. A slide-into-
+     place motion still reads as "appearing", and content is readable at
+     every single frame of it even in the worst case. */
   transform: translateY(24px);
-  transition: opacity .6s cubic-bezier(.16,.8,.24,1), transform .6s cubic-bezier(.16,.8,.24,1);
+  transition: transform .6s cubic-bezier(.16,.8,.24,1);
 }
-.reveal.in{ opacity: 1; transform: none; }
+.reveal.in{ transform: none; }
 @media (prefers-reduced-motion: reduce){
-  .reveal{ opacity: 1; transform: none; transition: none; }
+  .reveal{ transform: none; transition: none; }
 }
 
 /* =========================================================
